@@ -1,0 +1,30 @@
+{
+  "name": "adl_test_automation_project",
+  "version": "1.0.0",
+  "description": "Validar conocimientos durante la formación Test Automation Engineer - ADL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marglodis/adl_test_automation_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marglodis/adl_test_automation_project/issues"
+  },
+  "homepage": "https://github.com/Marglodis/adl_test_automation_project#readme",
+  "dependencies": {
+    "cypress": "^14.5.2"
+  },
+  "devDependencies": {
+    "cypress-cucumber-preprocessor": "^4.3.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/e2e/step-definitions"
+  }
+}
