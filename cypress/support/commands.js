@@ -12,7 +12,6 @@
 import { CommonPageHelper } from "../e2e/pages/common-page.helper";
 import { CommonPageElements } from "../e2e/pages/common-page.elements";
 // -- This is a parent command --
-//Cypress.Commands.add('login', (email, password) => { ... })
 Cypress.Commands.add('loginValido', () => {
   cy.fixture('credentials').then(user => {
     CommonPageHelper.navigateToTheApp();

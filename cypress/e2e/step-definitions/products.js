@@ -1,5 +1,6 @@
 import { Given, When, Then} from "cypress-cucumber-preprocessor/steps";
 import { CommonPageElements } from "../pages/common-page.elements";
+import { CommonPageHelper } from "../pages/common-page.helper";
 
 
 Given('el usuario está logueado en el dashboard', () => {
@@ -35,4 +36,22 @@ And('consultar un producto del listado', () => {
   cy.url().should('match', /\/articulos\/\d+$/);
 });
 
+// Registrar un producto
 
+When('registra un nuevo producto con nombre {string}', (productName) =>{
+    CommonPageElements.entidadesLink.click();
+    CommonPageElements.articlesLink.click();
+    CommonPageElements.btnCreateArticle.should('be.visible');
+    CommonPageElements.btnCreateArticle.click();
+    cy.url().should('include','/articulos/nuevo');
+    CommonPageHelper.createNewProduct(productName);  
+    cy.contains(`Articulo "${productName}" creado con éxito!`)
+    //cy.get('div[data-in="true"]')
+    
+})
+
+Then('el producto {string} debería estar en la lista',(productName)=>{
+  cy.url().should('include', '/articulos');
+  cy.get('table').should('be.visible');
+  cy.contains(`${productName}`)
+})
