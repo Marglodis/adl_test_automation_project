@@ -9,8 +9,20 @@
 // ***********************************************
 //
 //
+import { CommonPageHelper } from "../e2e/pages/common-page.helper";
+import { CommonPageElements } from "../e2e/pages/common-page.elements";
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+//Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('loginValido', () => {
+  cy.fixture('credentials').then(user => {
+    CommonPageHelper.navigateToTheApp();
+    CommonPageElements.inputEmail.type(user.emailValido);
+    CommonPageElements.inputPassword.type(user.passwordValido);
+    CommonPageHelper.clickOnBtnIngresar();
+    CommonPageElements.dashboardTitle.should('be.visible');
+  });
+});
+
 //
 //
 // -- This is a child command --
